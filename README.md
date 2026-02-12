@@ -12,7 +12,6 @@ This project showcases a high-quality 3D model captured and processed using mode
 
 The application features:
 - **Interactive 3D Viewer** - Real-time rendering of the Gaussian Splat model
-- **Detailed Model Information** - Comprehensive explanation of the model creation process
 - **Responsive Design** - Works seamlessly on desktop and mobile devices
 - **Modern UI/UX** - Elegant dark theme with smooth hover effects and transitions
 
@@ -20,100 +19,41 @@ The application features:
 
 -  **High-Performance Rendering** - Efficient WebGL-based 3D visualization
 -  **Fully Responsive** - Adapts beautifully to all screen sizes
--  **Modern Design** - Dark theme with accent colors and smooth animations
--  **Hot Module Replacement (HMR)** - Instant feedback during development
--  **Optimized Build** - Production-ready build with minimal bundle size
--  **Easy Deployment** - Ready to deploy to any static hosting service
 
 ##  Technology Stack
 
 - **Frontend Framework**: TypeScript, Vite
 - **3D Rendering**: Three.js
-- **Build Tool**: Vite 5.x
-- **Styling**: Modern CSS3 with flexbox and gradients
-- **Package Manager**: npm
+- **Build Tool**: Vite
 
-##  Project Structure
 
-`
-splan/
-  index.html              # Main HTML entry point
-  vite.config.ts          # Vite configuration
-  tsconfig.json           # TypeScript configuration
-  package.json            # Project dependencies
-  .gitignore              # Git ignore rules
-  src/
-     index.ts            # Application entry point
-     app.ts              # Main application class
-  public/
-     splan.html          # Gaussian Splat model
-  dist/                   # Production build output
-  node_modules/           # Dependencies
-`
-
-##  Getting Started
-
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
 
 ### Installation
 
 1. **Clone the repository**
-   \\\ash
+   
    git clone https://github.com/hussainkazemian/Gaussian-splat.git
    cd Gaussian-splat
-   \\\
+   
 
 2. **Install dependencies**
-   \\\ash
+
    npm install
-   \\\
+   
 
 3. **Start development server**
-   \\\ash
+   
    npm run dev
-   \\\
+   
    The app will be available at \http://localhost:5173\
 
-### Build for Production
-
-\\\ash
-npm run build
-\\\
-
-This generates an optimized production build in the \dist/\ folder.
-
-### Preview Production Build
-
-\\\ash
-npm run preview
-\\\
-
-##  Project Commands
-
-| Command | Description |
-|---------|-------------|
-| \
-pm run dev\ | Start development server with HMR |
-| \
-pm run build\ | Create optimized production build |
-| \
-pm run preview\ | Preview production build locally |
-
-##  Model Creation Process
-
-The 3D model displayed in this viewer was created through a sophisticated workflow:
 
 ### 1. **Capture** 
 - Captured using **Scaniverse** mobile application in splat mode
-- Photogrammetry-based 3D reconstruction from multiple images
-- High-quality point cloud data preservation
 
 ### 2. **Enhancement** 
 - Model enhancement with softer rendering applied
-- Export to PLY (Point Cloud) format
-- Optimized point cloud for further processing
+- Export to .PLY (Point Cloud) format
 
 ### 3. **Processing** 
 - Imported into **SuperSplat Editor** (https://superspl.at/editor)
@@ -122,7 +62,7 @@ The 3D model displayed in this viewer was created through a sophisticated workfl
 - Quality improvement and file size reduction
 
 ### 4. **Animation** 
-- Strategic keypoints added for cinematic motion
+- Strategic keypoints added
 - Dynamic camera paths for interactive viewing
 - Enhanced presentation capabilities
 
@@ -131,94 +71,3 @@ The 3D model displayed in this viewer was created through a sophisticated workfl
 - Ready for web deployment
 - No external dependencies required for viewing
 
-##  Deployment
-
-### Deploy to GitHub Pages
-
-1. Ensure your repository is public
-2. Go to repository Settings  Pages
-3. Set source to \main\ branch and \/dist\ folder
-4. Your site will be available at \https://yourusername.github.io/Gaussian-splat/\
-
-### Deploy to Web Server
-
-1. Run \
-pm run build\
-2. Upload the entire \dist/\ folder to your web hosting
-3. If deploying to a subdirectory, update the \ase\ value in \ite.config.ts\
-
-### Custom Base Path
-
-If deploying to a subdirectory (e.g., \/~user/gaussian-splat/\), update \ite.config.ts\:
-
-\\\	ypescript
-base: isProd ? '/~user/gaussian-splat/' : '/',
-\\\
-
-##  Customization
-
-### Change Model
-
-Replace \public/splan.html\ with your own Gaussian Splat HTML export:
-
-1. Export from SuperSplat Editor as HTML
-2. Replace the file in \public/splan.html\
-3. Update the model description in \src/app.ts\
-
-### Modify UI Text
-
-Edit the \setupInfo()\ method in \src/app.ts\ to update model information and descriptions.
-
-### Customize Styling
-
-Edit the CSS in \index.html\ to modify colors, spacing, and layout. Current theme uses:
-- Primary: \#0f0f0f\ (dark background)
-- Accent: \#ffaf50\ (orange highlight)
-- Text: \#e0e0e0\ (light gray)
-
-##  Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-##  License
-
-This project is provided as-is for educational and portfolio purposes.
-
-##  Author
-
-**Hussain Kazemian**
-- GitHub: [@hussainkazemian](https://github.com/hussainkazemian)
-- Repository: [Gaussian-splat](https://github.com/hussainkazemian/Gaussian-splat)
-
-##  Credits
-
-- **Scaniverse** - 3D capture technology
-- **SuperSplat Editor** - Model processing and optimization
-- **Three.js** - 3D rendering engine
-- **Vite** - Next generation build tool
-
-##  Notes
-
-- Ensure splan.html is placed in the \public/\ folder for proper deployment
-- The iframe uses relative paths that respect the Vite base configuration
-- Hot Module Replacement works seamlessly during development
-- Production builds are fully optimized with tree-shaking and minification
-
-##  Future Enhancements
-
-Potential improvements for future versions:
-- Camera controls (orbit, zoom, pan)
-- Model download functionality
-- Animation timeline controls
-- Multi-model support
-- Advanced lighting controls
-- Performance analytics
-
----
-
-**Last Updated**: February 12, 2026
-
-For issues or questions, please open an issue on GitHub.
