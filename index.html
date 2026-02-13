@@ -22,8 +22,15 @@
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       gap: 20px;
       padding: 20px;
+    }
+    #viewers-row {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      min-height: 0;
     }
     #viewer-container {
       flex: 1;
@@ -33,81 +40,82 @@
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     }
+    #viewer-container .viewer-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffaf50;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+      pointer-events: none;
+    }
+    #ply-viewer-container {
+      flex: 1;
+      position: relative;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    #ply-viewer-container .viewer-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #50afff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+      pointer-events: none;
+    }
+    #ply-viewer-container canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
     #info-container {
-      flex: 0 0 32%;
-      padding: 32px;
-      overflow-y: auto;
+      flex: 0 0 auto;
+      padding: 24px 32px;
       background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(255, 175, 80, 0.1);
       border: 1px solid rgba(255, 175, 80, 0.15);
-      transition: all 0.3s ease;
-    }
-    #info-container:hover {
-      box-shadow: 0 12px 48px rgba(255, 175, 80, 0.2);
-      border-color: rgba(255, 175, 80, 0.3);
-      transform: translateY(-2px);
     }
     #info-container h1 {
-      font-size: 32px;
-      margin-bottom: 24px;
+      font-size: 24px;
+      margin-bottom: 16px;
       color: #ffffff;
       font-weight: 700;
     }
-    #info-container p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #c0c0c0;
-      margin-bottom: 18px;
-      text-align: justify;
-      transition: color 0.3s ease;
+    #info-text {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
     }
-    #info-container p:hover {
-      color: #e0e0e0;
+    #info-text .info-item {
+      flex: 1 1 280px;
+      max-width: 400px;
     }
-    #info-container p strong {
+    #info-text .info-item strong {
       color: #ffaf50;
       font-weight: 600;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
     }
-    #info-container .model-tag {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(255, 175, 80, 0.15) 0%, rgba(255, 175, 80, 0.05) 100%);
-      color: #ffaf50;
-      padding: 6px 16px;
-      border-radius: 24px;
-      font-size: 11px;
-      margin-bottom: 24px;
-      border: 1.5px solid rgba(255, 175, 80, 0.3);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-    #info-container .model-tag:hover {
-      background: linear-gradient(135deg, rgba(255, 175, 80, 0.25) 0%, rgba(255, 175, 80, 0.1) 100%);
-      border-color: rgba(255, 175, 80, 0.5);
+    #info-text .info-item span {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #a0a0a0;
     }
     iframe {
       border: none;
       display: block;
-    }
-    
-    /* Scrollbar styling */
-    #info-container::-webkit-scrollbar {
-      width: 8px;
-    }
-    #info-container::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    #info-container::-webkit-scrollbar-thumb {
-      background: rgba(255, 175, 80, 0.2);
-      border-radius: 4px;
-      transition: background 0.3s ease;
-    }
-    #info-container::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 175, 80, 0.4);
     }
 
     /* Responsive design */
@@ -116,44 +124,67 @@
         gap: 16px;
         padding: 16px;
       }
-      #info-container {
-        flex: 0 0 38%;
-        padding: 24px;
-      }
-      #info-container h1 {
-        font-size: 28px;
-      }
-      #info-container p {
-        font-size: 13px;
+      #viewers-row {
+        gap: 16px;
       }
     }
 
     @media (max-width: 768px) {
       #app {
-        flex-direction: column;
         gap: 12px;
         padding: 12px;
       }
-      #viewer-container {
-        flex: 1;
+      #viewers-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+      #viewer-container,
+      #ply-viewer-container {
+        min-height: 250px;
       }
       #info-container {
-        flex: 0 0 35%;
-        padding: 20px;
+        padding: 16px;
       }
       #info-container h1 {
-        font-size: 24px;
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <div id="viewer-container"></div>
+    <div id="viewers-row">
+      <div id="viewer-container">
+        <span class="viewer-label">Model exported as HTML file</span>
+      </div>
+      <div id="ply-viewer-container">
+        <span class="viewer-label">Model exported as PLY (.ply) file</span>
+      </div>
+    </div>
     <div id="info-container">
-      <span class="model-tag">3D GAUSSIAN SPLAT MODEL</span>
       <h1>Model Overview</h1>
-      <div id="info-text"></div>
+      <div id="info-text">
+        <div class="info-item">
+          <strong>Creation & Capture</strong>
+          <span>This model was created using the Scaniverse mobile application in splat mode to capture detailed 3D geometry.</span>
+        </div>
+        <div class="info-item">
+          <strong>Enhancement & Export</strong>
+          <span>After capturing, the model was enhanced with softer rendering and then exported as a .ply (Point Cloud) file and .html.</span>
+        </div>
+        <div class="info-item">
+          <strong>SuperSplat Processing</strong>
+          <span>The model was imported into SuperSplat Editor for optimization. Unnecessary geometric details were cleaned to improve quality and reduce file size.</span>
+        </div>
+        <div class="info-item">
+          <strong>Animation & Keyframes</strong>
+          <span>Strategic keypoints were added to create dynamic motion videos and interactive presentations.</span>
+        </div>
+        <div class="info-item">
+          <strong>Web Export</strong>
+          <span>Finally, the model was exported as HTML and .ply, optimized for web deployment without requiring additional plugins.</span>
+        </div>
+      </div>
     </div>
   </div>
   <script type="module" src="/src/index.ts"></script>
